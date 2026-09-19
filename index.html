@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>10 MONTHS WITH YOU</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Outfit:wght@400;600;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- PORTRAIT ORIENTATION WARNING -->
+    <div id="portrait-warning">
+        <div class="warning-card">
+            <div class="warning-icon">↔️</div>
+            <h2>TURN YOUR PHONE SIDEWAYS</h2>
+            <p>this place works better that way.</p>
+            <div class="warning-sub">Rotate your device to landscape mode</div>
+        </div>
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
+    <div id="app" class="landscape-container">
+        
+        <!-- GLOBAL UI OVERLAYS -->
+        <div id="notification-toast" class="toast hidden">
+            <span id="toast-message">Notification message</span>
+        </div>
+
+        <!-- SCREEN 0: LANDING / OPENING -->
+        <section id="screen-landing" class="screen active">
+            <div class="landing-content">
+                <div class="stamp-badge">19.09.2026</div>
+                <h1 class="y2k-title">10 MONTHS WITH YOU</h1>
+                <p class="opening-text">
+                    one random meeting.<br>
+                    a lot of stupid moments.<br>
+                    somehow, we’re still here.
+                </p>
+                <button id="btn-enter" class="btn-y2k pulse">
+                    <span>[ ENTER ]</span>
+                </button>
+            </div>
+            <!-- Hidden Tomato #0 (Fake or Intro Tomato) -->
+            <div id="landing-tomato" class="hidden-tomato" data-tomato-id="0" style="bottom: 15px; right: 20px;">
+                🍅
+            </div>
+        </section>
+
+        <!-- SCREEN 1: MAIN MENU / HUB -->
+        <section id="screen-hub" class="screen hidden">
+            <header class="hub-header">
+                <div class="brand">10M // ARCHIVE</div>
+                <div class="counters">
+                    <div class="counter-badge room-counter">♡ <span id="rooms-discovered-count">0</span> / 6 DISCOVERED</div>
+                    <div class="counter-badge tomato-counter">🍅 <span id="tomatoes-found-count">0</span> / 5 TOMATOES</div>
+                </div>
+            </header>
+
+            <div class="hub-title-container">
+                <h2>WELCOME TO OUR LITTLE ARCHIVE.</h2>
+            </div>
+
+            <div class="grid-cards">
+                <!-- Card 1: Photo Room -->
+                <div class="card-y2k card-photo" data-room="album">
+                    <div class="card-badge" id="badge-album">LOCKED</div>
+                    <div class="card-icon">📸</div>
+                    <h3>THE ALBUM</h3>
+                    <p>US, SOMEWHERE IN TIME</p>
+                </div>
+
+                <!-- Card 2: Music Room -->
+                <div class="card-y2k card-music" data-room="player">
+                    <div class="card-badge" id="badge-player">LOCKED</div>
+                    <div class="card-icon">🎧</div>
+                    <h3>THE PLAYER</h3>
+                    <p>PRESS PLAY</p>
+                </div>
+
+                <!-- Card 3: Game Room -->
+                <div class="card-y2k card-game" data-room="game">
+                    <div class="card-badge" id="badge-game">LOCKED</div>
+                    <div class="card-icon">🎮</div>
+                    <h3>THE GAME</h3>
+                    <p>CAN YOU FIND IT?</p>
+                </div>
+
+                <!-- Card 4: Letter Room -->
+                <div class="card-y2k card-letters" data-room="letters">
+                    <div class="card-badge" id="badge-letters">LOCKED</div>
+                    <div class="card-icon">💌</div>
+                    <h3>THE LETTERS</h3>
+                    <p>OPEN WHEN…</p>
+                </div>
+
+                <!-- Card 5: Archive Room -->
+                <div class="card-y2k card-archive" data-room="archive">
+                    <div class="card-badge" id="badge-archive">LOCKED</div>
+                    <div class="card-icon">🕰️</div>
+                    <h3>THE ARCHIVE</h3>
+                    <p>10 LITTLE CHAPTERS</p>
+                </div>
+
+                <!-- Card 6: Final / Secret Room -->
+                <div class="card-y2k card-final" id="card-final-room" data-room="final">
+                    <div class="card-badge" id="badge-final">🔒 LOCKED</div>
+                    <div class="card-icon">🔒</div>
+                    <h3>ONE LAST THING</h3>
+                    <p id="final-card-sub">LOCKED</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROOM 01: THE ALBUM (PHOTO ROOM) -->
+        <section id="room-album" class="screen room-screen hiddentheme-album">
+            <header class="room-nav">
+                <button class="btn-back">← MENU</button>
+                <div class="room-title">📸 THE ALBUM<span>US, SOMEWHERE IN TIME</span></div>
+            </header>
+
+            <div class="scrapbook-container">
+                <div class="photo-grid" id="album-grid">
+                    <!-- Dynamic photo items will be injected by JS -->
+                </div>
+            </div>
+
+            <!-- Hidden Tomato #1 in Photo Room -->
+            <div class="hidden-tomato" data-tomato-id="1" style="top: 18px; right: 80px;">🍅</div>
+
+            <!-- Photo Fullscreen Viewer Modal -->
+            <div id="photo-modal" class="modal hidden">
+                <div class="modal-content scrapbook-frame">
+                    <button id="modal-close" class="btn-close">&times;</button>
+                    <div class="modal-body">
+                        <div class="img-wrapper">
+                            <img id="modal-img" src="" alt="Photo detail">
+                        </div>
+                        <div class="modal-caption-box">
+                            <h4 id="modal-title">TITLE</h4>
+                            <p id="modal-caption">Caption text goes here...</p>
+                        </div>
+                    </div>
+                    <div class="modal-controls">
+                        <button id="modal-prev" class="btn-sm">◀ PREV</button>
+                        <button id="modal-next" class="btn-sm">NEXT ▶</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROOM 02: THE PLAYER (MUSIC ROOM) -->
+        <section id="room-player" class="screen room-screen hidden theme-music">
+            <header class="room-nav">
+                <button class="btn-back">← MENU</button>
+                <div class="room-title">🎧 THE PLAYER<span>PRESS PLAY</span></div>
+            </header>
+
+            <div class="music-container">
+                <div class="cd-section">
+                    <div class="cd-player-housing">
+                        <div id="cd-disc" class="cd-disc">
+                            <div class="cd-inner"></div>
+                            <div class="cd-center-hole"></div>
+                            <!-- Hidden Tomato #2 on CD Disc Center -->
+                            <div class="hidden-tomato" data-tomato-id="2" style="top: 25%; left: 45%;">🍅</div>
+                        </div>
+                    </div>
+                    <div class="equalizer">
+                        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                    </div>
+                </div>
+
+                <div class="player-controls-section">
+                    <div class="now-playing-box">
+                        <span class="label">NOW PLAYING:</span>
+                        <h3 id="current-song-title">Kita Lewati Berdua</h3>
+                        <p id="current-artist">Main Track</p>
+                    </div>
+
+                    <div class="tracklist-box">
+                        <ul id="playlist">
+                            <!-- Track Items Injected by JS -->
+                        </ul>
+                    </div>
+
+                    <div class="external-links">
+                        <a id="spotify-link" href="https://open.spotify.com" target="_blank" class="btn-link">SPOTIFY ↗</a>
+                        <a id="youtube-link" href="https://youtube.com" target="_blank" class="btn-link">YOUTUBE ↗</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROOM 03: THE GAME (GAME ROOM) -->
+        <section id="room-game" class="screen room-screen hidden theme-game">
+            <header class="room-nav">
+                <button class="btn-back">← MENU</button>
+                <div class="room-title">🎮 MAHENS VERY SERIOUS TEST™<span>CAN YOU FIND IT?</span></div>
+            </header>
+
+            <div class="game-container">
+                <div class="game-header">
+                    <span id="game-level-indicator">LEVEL 01 / 05</span>
+                    <h3 id="game-level-title">LEVEL TITLE</h3>
+                </div>
+
+                <div class="game-stage" id="game-stage">
+                    <!-- Dynamic Game Level Content rendered by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ROOM 04: THE LETTERS (LETTER ROOM) -->
+        <section id="room-letters" class="screen room-screen hidden theme-letters">
+            <header class="room-nav">
+                <button class="btn-back">← MENU</button>
+                <div class="room-title">💌 THE LETTERS<span>OPEN WHEN...</span></div>
+            </header>
+
+            <div class="letters-container">
+                <div class="envelopes-grid" id="envelopes-grid">
+                    <!-- 4 Envelopes injected by JS -->
+                </div>
+            </div>
+
+            <!-- Hidden Tomato #4 in Letters Room -->
+            <div class="hidden-tomato" data-tomato-id="4" style="bottom: 20px; left: 30px;">🍅</div>
+
+            <!-- Letter Content Modal -->
+            <div id="letter-modal" class="modal hidden">
+                <div class="modal-content letter-paper">
+                    <button id="letter-modal-close" class="btn-close">&times;</button>
+                    <div class="letter-header">
+                        <span class="letter-tag" id="letter-modal-tag">OPEN WHEN...</span>
+                    </div>
+                    <div class="letter-body" id="letter-modal-text">
+                        <!-- Letter text injected here -->
+                    </div>
+                    <div class="letter-footer">
+                        - Mahen
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROOM 05: THE ARCHIVE (ARCHIVE ROOM) -->
+        <section id="room-archive" class="screen room-screen hidden theme-archive">
+            <header class="room-nav">
+                <button class="btn-back">← MENU</button>
+                <div class="room-title">🕰️ THE ARCHIVE<span>10 LITTLE CHAPTERS</span></div>
+            </header>
+
+            <div class="archive-container">
+                <div class="archive-sidebar">
+                    <div class="sidebar-header">FILE EXPLORER</div>
+                    <ul id="chapter-list">
+                        <!-- Chapters list items injected by JS -->
+                    </ul>
+                </div>
+                <div class="archive-viewer">
+                    <div class="archive-window-header">
+                        <span id="archive-file-title">chapter_01.txt</span>
+                        <div class="win-controls"><span>_</span><span>□</span><span>×</span></div>
+                    </div>
+                    <div class="archive-content" id="archive-content-area">
+                        <!-- Chapter detail content injected by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hidden Tomato #5 in Archive Room -->
+            <div class="hidden-tomato" data-tomato-id="5" style="bottom: 12px; right: 180px;">🍅</div>
+        </section>
+
+        <!-- SECRET / FINAL ROOM -->
+        <section id="room-final" class="screen room-screen hidden theme-final">
+            <div class="stars-bg"></div>
+            <div class="final-container">
+                <div id="secret-unlock-header" class="secret-header hidden">
+                    <div class="trophy-badge">TOMATO MASTER 🍅</div>
+                    <p class="sub">certified tomato hunter</p>
+                </div>
+
+                <div class="final-content-card">
+                    <div class="final-media-wrapper">
+                        <img id="final-photo-el" src="assets/final/final_photo.jpg" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400/1e293b/f8fafc?text=OUR+FINAL+MOMENT+PHOTO';" alt="Final Photo">
+                    </div>
+
+                    <div class="final-message-box">
+                        <div class="seq-text" id="seq-1">10 months.</div>
+                        <div class="seq-text" id="seq-2">Still here.</div>
+                        <div class="seq-text" id="seq-3">Still us.</div>
+                        
+                        <div class="main-final-text" id="final-main-quote">
+                            "Makasih udah jadi salah satu ciptaan Tuhan yang datang ke kehidupan aku."
+                        </div>
+                        <p class="final-sub">- see you in the next chapter. -</p>
+                    </div>
+                </div>
+
+                <button class="btn-back btn-back-final">← RETURN TO ARCHIVE</button>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
